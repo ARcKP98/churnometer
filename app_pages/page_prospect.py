@@ -58,8 +58,7 @@ def page_prospect_body():
 
     # predict on live data
     if st.button("Run Predictive Analysis"):
-        churn_prediction = predict_churn(
-            X_live, churn_features, churn_pipe_dc_fe, churn_pipe_model)
+        churn_prediction = predict_churn(X_live, churn_features, churn_pipe_dc_fe, churn_pipe_model)
 
         if churn_prediction == 1:
             predict_tenure(X_live, tenure_features,
@@ -94,6 +93,7 @@ def DrawInputsWidgets():
     col5, col6, col7, col8 = st.beta_columns(4)
 
     # We are using these features to feed the ML pipeline - values copied from check_variables_for_UI() result
+    # {'MonthlyCharges', 'Contract', 'OnlineBackup', 'PaymentMethod', 'InternetService', 'PhoneService'}
 
     # create an empty DataFrame, which will be the live data
     X_live = pd.DataFrame([], index=[0])
